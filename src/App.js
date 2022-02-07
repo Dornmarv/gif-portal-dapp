@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import twitterLogo from "./assets/twitter-logo.svg";
 import solanaLogo from "./assets/solana-sol.svg";
 import "./App.css";
@@ -228,7 +228,7 @@ const App = () => {
     }
   };
 
-  const getGifList = async () => {
+  const getGifList = useCallback(async () => {
     try {
       const provider = getProvider();
       const program = new Program(idl, programID, provider);
@@ -242,7 +242,7 @@ const App = () => {
       console.log("Error in getGifList: ", error);
       setGifList(null);
     }
-  };
+  }, []) 
 
   /*
    * When our component first mounts, let's check to see if we have a connected
