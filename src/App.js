@@ -257,7 +257,7 @@ const App = () => {
     return () => window.removeEventListener("load", onLoad);
   }, []);
 
-  useEffect((getGifList) => {
+  useEffect(() => {
     if (walletAddress) {
       console.log("Fetching GIF list...");
       getGifList();
